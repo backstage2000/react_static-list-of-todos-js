@@ -1,22 +1,17 @@
 // Add the required props
 import cn from 'classnames';
 import './TodoInfo.scss';
+import { UserInfo } from '../UserInfo';
 
-export const TodoInfo = ({ todos }) => {
+export const TodoInfo = ({ todo }) => {
   return (
     <article
       className={cn('TodoInfo', {
-        'TodoInfo--completed': todos.completed,
+        'TodoInfo--completed': todo.completed,
       })}
     >
-      <h2 className="TodoInfo__title">{todos.title}</h2>
-      {todos.user && <UserInfo user={todos.user} />}
+      <h2 className="TodoInfo__title">{todo.title}</h2>
+      {todo.user && <UserInfo user={todo.user} />}
     </article>
   );
 };
-
-const UserInfo = ({ user }) => (
-  <a className="UserInfo" href={`mailto:${user.email}`}>
-    {user.name}
-  </a>
-);
